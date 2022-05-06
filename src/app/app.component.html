@@ -1,0 +1,36 @@
+<ion-app>
+
+  <ion-menu menuId="main-menu" contentId="main">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+
+      <ion-list>
+        <ion-menu-toggle>
+          <ion-item routerLink="/uprofile">
+            <ion-icon name="mail" slot="start"></ion-icon>
+            <ion-label>Profile</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item routerLink="/uticket">
+            <ion-icon name="ticket" slot="start"></ion-icon>
+            <ion-label>Ticket</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item routerLink="/uaccount">
+            <ion-icon name="cash" slot="start"></ion-icon>
+            <ion-label>Account</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+      
+    </ion-content>
+  </ion-menu>
+
+  <ion-router-outlet id="main"></ion-router-outlet>
+</ion-app>
