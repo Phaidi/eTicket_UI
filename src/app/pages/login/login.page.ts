@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
 import { User } from 'src/app/models/user';
-import { AuthService } from 'src/app/services/auth.service';
+// import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -15,28 +15,32 @@ export class LoginPage implements OnInit {
   logForm: User = new User;
   errors = [];
 
-  constructor(private authService: AuthService,
-              private router: Router,
+  constructor(private router: Router,
               public loadingController: LoadingController) { }
 
   ngOnInit() {
   }
 
   login() {
-    this.authService.logIn(this.logForm).subscribe({
-      next: data => {
-        console.log('Log in data:',data);
-        this.errors = [];
+    // this.authService.logIn(this.logForm).subscribe({
+    //   next: data => {
+    //     console.log('Log in data:',data);
+    //     this.errors = [];
 
-        this.presentLoading();
+    //     this.presentLoading();
 
-        this.router.navigate(['/home/listing']);
+    //     this.router.navigate(['/home/listing']);
 
-      },
-      error: err => {
-        this.errors[0] = err.message;
-      }
-    });
+    //   },
+    //   error: err => {
+    //     this.errors[0] = err.message;
+    //   }
+    // });
+
+    this.presentLoading();
+
+    this.router.navigate(['/udash']);
+
   }
 
   async presentLoading() {
