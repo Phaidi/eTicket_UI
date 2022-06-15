@@ -34,7 +34,15 @@ const routes: Routes = [
   {
     path: 'uaccount',
     loadChildren: () => import('./pages/uaccount/uaccount.module').then( m => m.UaccountPageModule)
+  },  {
+    path: 'ticket',
+    loadChildren: () => import('./ticket/ticket.module').then( m => m.TicketPageModule)
   },
+  {
+    path: 'tickets',
+    loadChildren: () => import('./tickets/tickets.module').then( m => m.TicketsPageModule)
+  },
+
 ];
 
 @NgModule({
