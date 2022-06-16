@@ -1,0 +1,125 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>ticket</ion-title>
+    <ion-buttons slot="end">
+      Bal: R123456
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #f="ngForm" ><br><br>
+    <ion-row>
+      <ion-col col-6>
+        <div>Single</div>
+      </ion-col>
+      <ion-col>
+      </ion-col>
+      <ion-col>
+        <div>R30</div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6>
+        <div>Return</div>
+      </ion-col>
+      <ion-col>
+      </ion-col>
+      <ion-col>
+        <div>R55</div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6>
+        <div>Week</div>
+      </ion-col>
+      <ion-col>
+      </ion-col>
+      <ion-col>
+        <div>R275</div>
+      </ion-col>
+    </ion-row>
+    <br><br><br><br>
+
+
+    <ion-item>
+      <ion-label>Passenger Type</ion-label>
+      <ion-select value="notifications" interface="action-sheet"
+        #passType="ngModel"
+        type="text"
+        name="passType"
+        [(ngModel)]="ticForm.passType"
+        required>
+        <ion-select-option value="adult">Adult</ion-select-option>
+        <ion-select-option value="child">Child</ion-select-option>
+      </ion-select>
+      <div class="alert alert-danger" *ngIf="passType.invalid && (passType.dirty || passType.touched)">
+        <div *ngIf="passType.errors?.required">Passenger Type is required</div>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Trip Type</ion-label>
+      <ion-select value="notifications" interface="action-sheet"
+        #tripType="ngModel"
+        type="text"
+        name="tripType"
+        [(ngModel)]="ticForm.tripType"
+        required>
+        <ion-select-option value="single">Single</ion-select-option>
+        <ion-select-option value="return">Return</ion-select-option>
+        <ion-select-option value="week">Week</ion-select-option>
+      </ion-select>
+        <div class="alert alert-danger" *ngIf="tripType.invalid && (tripType.dirty || tripType.touched)">
+          <div *ngIf="tripType.errors?.required">Trip Type is required</div>
+        </div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Trip</ion-label>
+      <ion-select value="notifications" interface="action-sheet"
+        #trip="ngModel"
+        type="text"
+        name="trip"
+        [(ngModel)]="ticForm.trip"
+        required>
+        <ion-select-option value="pta-cbd">Pretoria-CBD</ion-select-option>
+        <ion-select-option value="pta-east">Pretoria-East</ion-select-option>
+        <ion-select-option value="pta-west">Pretoria-West</ion-select-option>
+        <ion-select-option value="pta-north">Pretoria-North</ion-select-option>
+        <ion-select-option value="mabopane">Mabopane</ion-select-option>
+        <ion-select-option value="garankua">Garankua</ion-select-option>
+      </ion-select>
+        <div class="alert alert-danger" *ngIf="trip.invalid && (trip.dirty || trip.touched)">
+          <div *ngIf="trip.errors?.required">Trip Destination is required</div>
+        </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Ticket For</ion-label>
+      <ion-input min="1" type="number"
+        #quantity="ngModel"
+        name="quantity"
+        [(ngModel)]="ticForm.quantity"
+        required
+        ></ion-input>
+        <div class="alert alert-danger" *ngIf="quantity.invalid && (quantity.dirty || quantity.touched)">
+          <div *ngIf="quantity.errors?.required">Ticket quantity is required</div>
+        </div>
+    </ion-item><br><br><br>
+    <ion-item lines="none">
+      <ion-row>
+        <ion-col col-6>
+          <ion-button routerLink="/udash">Cancel</ion-button>
+        </ion-col>
+        <ion-col>
+        </ion-col>
+        <ion-col>
+          <ion-button routerLink="/tickets" [disabled]="!f.valid">Create Ticket</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+
+  </form>
+
+</ion-content>
