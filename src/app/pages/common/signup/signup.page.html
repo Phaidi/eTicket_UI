@@ -17,32 +17,32 @@
   <div class="form">
     <div class="form-input">
         <ion-input type="text"
-          #name="ngModel"
+          #firstname="ngModel"
           type="text"
           minlength="5"
-          name="name"
-          [(ngModel)]="regForm.name"
+          name="firstname"
+          [(ngModel)]="regForm.firstname"
           placeholder="Name"
           required>
         </ion-input>
-      <div class="alert alert-danger" *ngIf="name.invalid && (name.dirty || name.touched)">
-        <div *ngIf="name.errors?.required">Name required</div>
-        <div *ngIf="name.errors?.minlength">Invalid minLength</div>
+      <div class="alert alert-danger" *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)">
+        <div *ngIf="firstname.errors?.required">Name required</div>
+        <div *ngIf="firstname.errors?.minlength">Invalid minLength</div>
       </div>
     </div>
     <div class="form-input">
         <ion-input type="text"
-          #surname="ngModel"
+          #lastname="ngModel"
           type="text"
           minlength="5"
-          name="surname"
-          [(ngModel)]="regForm.surname"
+          name="lastname"
+          [(ngModel)]="regForm.lastname"
           placeholder="Surname"
           required>
         </ion-input>
-      <div class="alert alert-danger" *ngIf="surname.invalid && (surname.dirty || surname.touched)">
-        <div *ngIf="surname.errors?.required">Surname required</div>
-        <div *ngIf="surname.errors?.minlength">Invalid minLength</div>
+      <div class="alert alert-danger" *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)">
+        <div *ngIf="lastname.errors?.required">Surname required</div>
+        <div *ngIf="lastname.errors?.minlength">Invalid minLength</div>
       </div>
     </div>
     <div class="form-input">
@@ -110,7 +110,7 @@
   </div>
   </div>
 
-  <ion-button expand="block" routerLink="/login" [disabled]="!f.valid">Sign Up</ion-button>
+  <ion-button (click)="signUp()" expand="block" [disabled]="!f.valid">Sign Up</ion-button>
   <!--<div class="button signup" routerLink="/welcome" >
     Sign Up <ion-icon name="chevron-forward-outline"></ion-icon>
     <ion-button size="small">Small</ion-button>
