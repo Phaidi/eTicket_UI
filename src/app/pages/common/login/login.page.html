@@ -48,7 +48,7 @@
 </div>
   </div>
 
-  <ion-button expand="block" routerLink="/udash" [disabled]="!f.valid">Login</ion-button>
+  <ion-button expand="block" routerLink="/udash" (click)="this.login()" [disabled]="!f.valid">Login</ion-button>
   <!--<div class="button" [disabled]="!f.valid">
     Login <ion-icon name="chevron-forward-outline" [disabled]="!f.valid"></ion-icon>
   </div>-->

@@ -62,6 +62,10 @@ const routes: Routes = [
     path: 'adticket',
     loadChildren: () => import('./pages/admin/adticket/adticket.module').then( m => m.AdticketPageModule)
   },
+  {
+    path: 'preview',
+    loadChildren: () => import('./pages/client/preview/preview.module').then( m => m.PreviewPageModule)
+  },
 
 
 ];

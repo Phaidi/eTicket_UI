@@ -1,4 +1,6 @@
+/* eslint-disable new-parens */
 import { Component, OnInit } from '@angular/core';
+import { Routes } from 'src/app/models/routes';
 
 @Component({
   selector: 'app-addroute',
@@ -6,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./addroute.page.scss'],
 })
 export class AddroutePage implements OnInit {
+
+  roForm: Routes = new Routes;
 
   constructor() { }
 

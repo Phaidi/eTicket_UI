@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-shadow */
+/* eslint-disable @typescript-eslint/member-ordering */
+/* eslint-disable @typescript-eslint/naming-convention */
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {User} from '../models/user';
@@ -11,7 +14,7 @@ import * as moment from 'moment';
 })
 export class AuthService {
 
-  URL = `http://localhost:7000`
+  URL = `http://localhost:7000`;
 
 
   constructor(private http: HttpClient) { }
@@ -39,4 +42,8 @@ export class AuthService {
     }), catchError(this.handleError));
 
   };
+
+  login(): Observable<User> {
+    return this.http.get<User>(`${this.URL}/login`);
+  }
 }

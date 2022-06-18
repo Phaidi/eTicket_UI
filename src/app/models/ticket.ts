@@ -3,4 +3,6 @@ export class Ticket {
   tripType: string;
   trip: string;
   quantity: number;
+  status: string;
+  expiringDate: Date;
 }

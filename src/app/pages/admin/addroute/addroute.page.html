@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -8,37 +8,129 @@
 </ion-header>
 
 <ion-content>
-  <br><br>
+  <br /><br />
   <ion-item lines="none">
-  <h2>Add a route, time intervals and Ride time</h2>
-</ion-item>
-  <br><br>
-  <ion-item>
-    <ion-row>
-      <ion-col col-6>
-        <ion-item lines="none">
-          <ion-label position="floating">Destination</ion-label>
-          <ion-input></ion-input>
-        </ion-item>
-      </ion-col>
-      <ion-col> </ion-col>
-      <ion-col>
-        <ion-item lines="none">
-          <ion-label position="floating">Ride Time</ion-label>
-          <ion-input></ion-input>
-        </ion-item>
-      </ion-col>
-    </ion-row>
+    <h2>Add a route, time intervals and Ride time</h2>
   </ion-item>
+  <br /><br />
 
-  <ion-item lines="none">
-    <ion-button shape="round" fill="outline">
-      ADD ROUTE
-      <ion-icon color="primary" name="add-circle-outline"></ion-icon>
-    </ion-button>
-    <ion-button shape="round" fill="outline">
-      UPDATE ROUTE
-      <ion-icon color="primary" name="add-circle-outline"></ion-icon>
-    </ion-button>
-  </ion-item>
+  <div>
+    <form #f="ngForm">
+      <ion-item>
+        <ion-row>
+          <ion-col col-6>
+            <ion-item lines="none">
+              <ion-label position="floating">Destination</ion-label>
+              <ion-input
+                #route="ngModel"
+                type="text"
+                name="route"
+                minlength="5"
+                [(ngModel)]="roForm.route"
+                required
+              >
+              </ion-input>
+              <div
+                class="alert alert-danger"
+                *ngIf="route.invalid && (route.dirty || route.touched)"
+              >
+                <div *ngIf="route.errors?.required">
+                  Destination route is required
+                </div>
+                <div *ngIf="route.errors?.minlength">Invalid minLength</div>
+              </div>
+            </ion-item>
+          </ion-col>
+          <ion-col> </ion-col>
+          <ion-col>
+            <ion-item lines="none">
+              <ion-label position="floating">Ride Time</ion-label>
+              <ion-input
+                #time="ngModel"
+                type="text"
+                name="time"
+                minlength="5"
+                [(ngModel)]="roForm.time"
+                required
+              >
+              </ion-input>
+              <div
+                class="alert alert-danger"
+                *ngIf="time.invalid && (time.dirty || time.touched)"
+              >
+                <div *ngIf="time.errors?.required">Ride time is required</div>
+                <div *ngIf="time.errors?.minlength">Invalid minLength</div>
+              </div>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-button [disabled]="!f.valid" shape="round" fill="outline">
+          ADD ROUTE
+          <ion-icon color="primary" name="add-circle-outline"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </form>
+  </div>
+
+  <div>
+    <form #f="ngForm">
+      <br /><br />
+      <ion-item>
+        <ion-row>
+          <ion-col col-6>
+            <ion-item lines="none">
+              <ion-label position="floating">Destination</ion-label>
+              <ion-input
+                #route="ngModel"
+                type="text"
+                name="route"
+                minlength="5"
+                [(ngModel)]="roForm.route"
+                required
+              >
+              </ion-input>
+              <div
+                class="alert alert-danger"
+                *ngIf="route.invalid && (route.dirty || route.touched)"
+              >
+                <div *ngIf="route.errors?.required">
+                  Destination route is required
+                </div>
+                <div *ngIf="route.errors?.minlength">Invalid minLength</div>
+              </div>
+            </ion-item>
+          </ion-col>
+          <ion-col> </ion-col>
+          <ion-col>
+            <ion-item lines="none">
+              <ion-label position="floating">Ride Time</ion-label>
+              <ion-input
+                #time="ngModel"
+                type="text"
+                name="time"
+                minlength="5"
+                [(ngModel)]="roForm.time"
+                required
+              >
+              </ion-input>
+              <div
+                class="alert alert-danger"
+                *ngIf="time.invalid && (time.dirty || time.touched)"
+              >
+                <div *ngIf="time.errors?.required">Ride time is required</div>
+                <div *ngIf="time.errors?.minlength">Invalid minLength</div>
+              </div>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-button [disabled]="!f.valid" shape="round" fill="outline"> UPDATE ROUTE </ion-button>
+      </ion-item>
+    </form>
+  </div>
 </ion-content>

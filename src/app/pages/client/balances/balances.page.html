@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="success">
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -26,14 +26,28 @@
     Here you can deposite funds in your account
   </ion-item><br>
 
-    <ion-row>
-      <ion-col>
-          <ion-label position="floating">Voucher Code</ion-label>
-          <ion-input></ion-input>
-      </ion-col>
-      <ion-col>
-        <ion-button size="small">Cash Voucher</ion-button>
-      </ion-col>
-    </ion-row>
+  <form #f="ngForm">
+    <ion-item>
+      <ion-input disabled value="User@email.com"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Voucher Code</ion-label>
+      <ion-input
+      #code="ngModel"
+        type="text"
+        minlength="6"
+        name="email"
+        [(ngModel)]="voForm.code"
+        placeholder="Email"
+        required>
+      </ion-input>
+      <div class="alert alert-danger" *ngIf="code.invalid && (code.dirty || code.touched)">
+        <div *ngIf="code.errors?.required">Voucher code required</div>
+        <div *ngIf="code.errors?.minlength">Invalid minLength</div>
+      </div>
+    </ion-item><br><br><br>
+
+    <ion-button [disabled]="!f.valid" expand="block">Deposit</ion-button>
+  </form>
 
 </ion-content>

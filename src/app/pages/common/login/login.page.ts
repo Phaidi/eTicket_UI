@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
 import { User } from 'src/app/models/user';
-// import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -16,21 +16,18 @@ export class LoginPage implements OnInit {
   errors = [];
 
   constructor(private router: Router,
-              public loadingController: LoadingController) { }
+              public loadingController: LoadingController,
+              private authService: AuthService) { }
 
   ngOnInit() {
+    this.login();
   }
 
-  // async presentLoading() {
-  //   const loading = await this.loadingController.create({
-  //     cssClass: 'my-custom-class',
-  //     message: 'Please wait...',
-  //     duration: 2000
-  //   });
-  //   await loading.present();
-
-  //   const { role, data } = await loading.onDidDismiss();
-  //   console.log('Loading dismissed!');
-  // }
+  login() {
+    this.authService.login().subscribe(data => {
+      console.log(data);
+      this.logForm = data;
+    });
+  }
 
 }
